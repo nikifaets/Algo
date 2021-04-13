@@ -7,7 +7,6 @@ void get_closest(int& left, int& right, const set<int, greater<int>>& line_asc, 
     left = *line_asc.lower_bound(num);
     right = *line_desc.lower_bound(num);
 
-    //cout << "insert " << num << " left " << left << " right " << right << endl;
 }
 
 void process_intervals(const int& left, const int& right, const int& num, int& intervals, const int& d){
@@ -26,9 +25,7 @@ void process_intervals(const int& left, const int& right, const int& num, int& i
         return;
     }
 
-    
 }
-
 
 int main(){
 
@@ -44,6 +41,7 @@ int main(){
 
     set<int> line_desc;
     set<int, greater<int>> line_asc;
+
     line_desc.insert(0);
     line_desc.insert(l-1);
 
@@ -56,6 +54,7 @@ int main(){
 
     line_asc.insert(x_last);
     line_desc.insert(x_last);
+
     if(intervals < 1 ){
 
         cout << 1 << endl;
@@ -70,7 +69,6 @@ int main(){
         get_closest(left, right, line_asc, line_desc, xi);
         process_intervals(left, right, xi, intervals, d);
 
-        //cout << "intervals " << intervals << endl;
         if(intervals < 1){
 
             cout << i+1 << endl;
