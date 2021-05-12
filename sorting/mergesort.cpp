@@ -1,63 +1,8 @@
 #include <bits/stdc++.h>
+#include "sort.cpp"
 using namespace std;
 
-void merge(int l, int mid, int h,  vector<int>& v){
 
-
-    int it1 = l;
-    int it2 = mid+1;
-
-    vector<int> temp(h-l+1);
-    int temp_it = 0;
-
-    while(it1 <= mid && it2 <= h){
-
-        temp[temp_it] = min(v[it1], v[it2]);
-
-        if(v[it1] <= v[it2]) it1 ++;
-
-        else{
-
-            it2++;
-        }
-
-        temp_it ++;
-
-    }
-
-    while(it1 <= mid){
-
-        temp[temp_it++] = v[it1++];
-
-    }
-
-    while(it2 <= h){
-
-        temp[temp_it++] = v[it2++];
-
-    }
-
-    for(int i=0; i<temp.size(); i++){
-
-        v[l+i] = temp[i];
-    }
-
-}
-
-void mergesort(int l, int h, vector<int>& v){
-
-
-    if(l < h){
-
-        int mid = (h+l)/2;
-        mergesort(l, mid, v);
-        mergesort(mid+1, h, v);
-        merge(l, mid, h, v);
-
-    }
-
-    
-}
 
 void generate_array(vector<int>& v){
     
@@ -91,7 +36,7 @@ void test(){
         vector<int> v(vec_size);
 
         generate_array(v);
-        mergesort(0, v.size()-1, v);
+        merge_sort::sort(0, v.size()-1, v);
         if(!is_array_sorted(v)){
 
             cout << "FAILED: \n";
@@ -128,13 +73,13 @@ int main(){
         cin >> v[i];
     }
 
-    mergesort(0, n-1, v);
+    merge_sort::sort(0, n-1, v);
 
 
     for(const int& i : v){
 
         cout << i << " ";
     }
-    
+
     return 0;
 }
