@@ -53,7 +53,7 @@ namespace merge_sort{
 
             while(it1 <= mid && it2 <= h){
 
-                temp[temp_it] = min(v[it1], v[it2]);
+                temp[temp_it] = std::min(v[it1], v[it2]);
 
                 if(v[it1] <= v[it2]) it1 ++;
 
@@ -93,8 +93,8 @@ namespace merge_sort{
         if(l < h){
 
             int mid = (h+l)/2;
-            mergesort(l, mid, v);
-            mergesort(mid+1, h, v);
+            sort(l, mid, v);
+            sort(mid+1, h, v);
             merge(l, mid, h, v);
 
         }
